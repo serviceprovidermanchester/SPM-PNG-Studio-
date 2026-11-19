@@ -1,0 +1,35 @@
+name: CI / Code Quality & Automated Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Lint & Test Core Suite
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate Project Structure & Integrity
+        run: |
+          echo "Verifying presence of core files..."
+          test -f index.html
+          test -f style.css
+          test -f app.js
+          test -f LICENSE
+          test -f README.md
+          echo "Project structural integrity verified."
+
+      - name: Run Unit Tests
+        run: |
+          node tests/converter.test.js

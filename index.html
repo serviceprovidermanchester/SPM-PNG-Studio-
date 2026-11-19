@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1223">
+  <meta name="description" content="SPM PNG Studio — High-performance, 100% private in-browser PNG conversion suite by SPManchester Private Limited. Convert PNG to JPG, WebP, SVG, PDF, ICO, BMP, and Base64.">
+  <meta name="author" content="Sayed Mudassar Akbar, SPManchester Private Limited">
+  <meta name="keywords" content="PNG converter, PNG to JPG, PNG to WebP, PNG to SVG, PNG to PDF, PNG to ICO, PNG to BMP, Base64 converter, image converter, private image converter, SPManchester">
+  <title>SPM PNG Studio™ — Enterprise In-Browser Image Transformation Suite</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="nav wrap">
+    <a href="./" class="logo" aria-label="SPM PNG Studio Home">
+      <span class="logo-square" aria-hidden="true">✦</span>
+      <span class="brand-title">SPM <span>PNG Studio</span></span>
+      <span class="company-badge">by SPManchester</span>
+    </a>
+    <div class="nav-links">
+      <span class="nav-chip"><span class="live-dot"></span> 100% In-Browser & Private</span>
+      <a href="#converters" class="nav-link">Formats</a>
+      <a href="#how" class="nav-link">How it works</a>
+      <a href="https://www.spmanchester.com" target="_blank" rel="noopener noreferrer" class="company-link">SPManchester.com ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero wrap">
+      <div class="eyebrow">
+        <span class="eyebrow-icon">✧</span> ENTERPRISE CLIENT-SIDE SUITE <span class="eyebrow-sep">·</span> ZERO SERVER UPLOADS
+      </div>
+      <h1>
+        Transform <span class="format-pill source-pill">PNG</span> into
+        <span class="format-pill target-pill" id="hero-target-pill">JPG</span>
+        <span class="gradient-word">instantly.</span>
+      </h1>
+      <p class="hero-sub">
+        An ultra-fast, zero-telemetry image conversion studio engineered by <strong>SPManchester Private Limited</strong>. All operations run directly in your browser's memory—your proprietary assets never touch an external server.
+      </p>
+      <div class="trust-strip">
+        <span>✦ 100% In-Browser Privacy</span>
+        <span>⚡ Multi-Threaded Batch Queue</span>
+        <span>📦 Instant ZIP Bundling</span>
+        <span>🔒 Zero Data Transmission</span>
+      </div>
+    </section>
+
+    <!-- Target Format Selector Ribbon -->
+    <section class="format-selector-section wrap" id="converters">
+      <div class="selector-heading">
+        <span class="step-kicker">SELECT TARGET FORMAT</span>
+        <h3>Choose your conversion destination</h3>
+      </div>
+      <div class="format-pills-container" role="tablist" aria-label="Conversion Formats">
+        <button class="target-tab active" data-target="JPG" role="tab" aria-selected="true">
+          <span class="tab-ext">.JPG</span>
+          <span class="tab-desc">Standard Photo</span>
+        </button>
+        <button class="target-tab" data-target="WEBP" role="tab" aria-selected="false">
+          <span class="tab-ext">.WEBP</span>
+          <span class="tab-desc">Modern Web</span>
+        </button>
+        <button class="target-tab" data-target="SVG" role="tab" aria-selected="false">
+          <span class="tab-ext">.SVG</span>
+          <span class="tab-desc">Vector Wrapper</span>
+        </button>
+        <button class="target-tab" data-target="PDF" role="tab" aria-selected="false">
+          <span class="tab-ext">.PDF</span>
+          <span class="tab-desc">Document Ready</span>
+        </button>
+        <button class="target-tab" data-target="ICO" role="tab" aria-selected="false">
+          <span class="tab-ext">.ICO</span>
+          <span class="tab-desc">Favicon / App</span>
+        </button>
+        <button class="target-tab" data-target="BMP" data-target="BMP" role="tab" aria-selected="false">
+          <span class="tab-ext">.BMP</span>
+          <span class="tab-desc">Bitmap Raw</span>
+        </button>
+        <button class="target-tab" data-target="BASE64" role="tab" aria-selected="false">
+          <span class="tab-ext">BASE64</span>
+          <span class="tab-desc">Data URL String</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Workspace Grid -->
+    <section class="workspace wrap" aria-label="Image conversion workspace">
+      <!-- Upload & Queue Panel -->
+      <div class="panel upload-panel">
+        <div class="panel-top">
+          <div>
+            <div class="step-kicker">STEP 01</div>
+            <h2>Upload PNG Source Images</h2>
+          </div>
+          <span class="panel-badge">INPUT · PNG / BASE64</span>
+        </div>
+
+        <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose or drop PNG files">
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+              <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5"/>
+              <path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/>
+            </svg>
+          </div>
+          <strong>Drop your PNG files here</strong>
+          <span class="drop-info">or click anywhere to browse from your device</span>
+          <span class="choose-btn">Choose PNG files <span aria-hidden="true">↗</span></span>
+          <small>Supports single or multiple PNGs · Up to 25 MB per file · 100% Private</small>
+          <input id="file-input" type="file" accept=".png,image/png" multiple hidden>
+        </div>
+
+        <!-- Optional Base64 Text Area -->
+        <div id="base64-area" class="base64-area" hidden>
+          <label for="base64-text">Or paste a Base64 image string / data URL:</label>
+          <textarea id="base64-text" placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." spellcheck="false"></textarea>
+          <button id="add-base64" class="text-button" type="button">Add Pasted Image →</button>
+        </div>
+
+        <!-- Queue Status & Listing -->
+        <div class="queue-head">
+          <span>QUEUED FILES <span id="queue-count" class="number-badge">0</span></span>
+          <button id="clear-btn" type="button" class="text-button" disabled>Clear all</button>
+        </div>
+        <div class="queue" id="queue">
+          <div class="empty-state">No files added yet. Drop your PNGs above to begin.</div>
+        </div>
+      </div>
+
+      <!-- Settings Panel -->
+      <aside class="panel settings-panel">
+        <div class="panel-top">
+          <div>
+            <div class="step-kicker">STEP 02</div>
+            <h2>Configure Output</h2>
+          </div>
+          <span class="panel-badge output-badge" id="output-badge">OUTPUT · JPG</span>
+        </div>
+
+        <div class="convert-flow">
+          <span class="square format-square">PNG</span>
+          <span class="flow-dash"></span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-dash"></span>
+          <span class="square format-square out-square" id="flow-target-square">JPG</span>
+        </div>
+
+        <!-- Resizing Controls -->
+        <label class="control-label" for="size-select">
+          IMAGE DIMENSIONS <span>Aspect ratio preserved</span>
+        </label>
+        <select id="size-select" class="select">
+          <option value="1">Original Resolution (100%)</option>
+          <option value="0.75">Scale to 75%</option>
+          <option value="0.5">Scale to 50%</option>
+          <option value="0.25">Scale to 25%</option>
+          <option value="custom">Custom Width (px)...</option>
+        </select>
+
+        <div id="custom-box" hidden>
+          <label class="control-label" for="custom-width">CUSTOM WIDTH (PX)</label>
+          <input class="select" id="custom-width" type="number" min="1" max="16000" value="1200">
+        </div>
+
+        <!-- Quality Control (for JPG & WEBP) -->
+        <div id="quality-control">
+          <label class="control-label" for="quality">
+            COMPRESSION QUALITY <strong id="quality-value">90%</strong>
+          </label>
+          <input type="range" id="quality" min="40" max="100" value="90" step="5">
+          <div class="range-ends">
+            <span>Higher Compression</span>
+            <span>Maximum Quality</span>
+          </div>
+        </div>
+
+        <!-- Privacy Assurance Card -->
+        <div class="privacy-note">
+          <span class="lock-icon" aria-hidden="true">🔒</span>
+          <div>
+            <strong>SPManchester Zero-Telemetry Guarantee</strong>
+            <span>All conversions execute entirely within your browser's Web APIs. No images or metadata ever exit your local device.</span>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="convert-btn" class="primary-btn" disabled type="button">
+          <span id="convert-label">Convert to JPG</span>
+          <span aria-hidden="true">→</span>
+        </button>
+
+        <div class="settings-footer">
+          <span id="status-text" role="status">Add files to get started</span>
+          <span class="watermark-free">NO WATERMARK · UNLIMITED</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results-section" class="results wrap" hidden aria-label="Converted files">
+      <div class="results-heading">
+        <div>
+          <div class="step-kicker">STEP 03</div>
+          <h2>Converted Files Ready <span id="result-count" class="number-badge">0</span></h2>
+        </div>
+        <button type="button" id="download-all" class="secondary-btn">
+          Download All as ZIP (In-Memory) ↓
+        </button>
+      </div>
+      <div id="results-list" class="result-list"></div>
+    </section>
+
+    <!-- Standalone Micro-Converters Directory -->
+    <section class="tools-directory wrap">
+      <div class="section-title">
+        <span class="step-kicker">DEDICATED TOOLS</span>
+        <h2>Explore Individual Standalone Converters</h2>
+        <p>Each tool is also packaged as an independent zero-dependency micro-app for targeted deployments.</p>
+      </div>
+      <div class="tools-grid">
+        <a href="converters/png-to-jpg/" class="tool-card">
+          <span class="tool-icon">📸</span>
+          <h4>PNG to JPG</h4>
+          <p>Flatten transparency onto crisp white backgrounds with customizable compression.</p>
+          <span class="tool-arrow">Open Tool →</span>
+        </a>
+        <a href="converters/png-to-webp/" class="tool-card">
+          <span class="tool-icon">🌐</span>
+          <h4>PNG to WebP</h4>
+          <p>Modern high-compression web format with transparent alpha channel retention.</p>
+          <span class="tool-arrow">Open Tool →</span>
+        </a>
+        <a href="converters/png-to-svg/" class="tool-card">
+          <span class="tool-icon">📐</span>
+          <h4>PNG to SVG</h4>
+          <p>Embeds high-resolution raster pixels into responsive vector XML containers.</p>
+          <span class="tool-arrow">Open Tool →</span>
+        </a>
+        <a href="converters/png-to-pdf/" class="tool-card">
+          <span class="tool-icon">📄</span>
+          <h4>PNG to PDF</h4>
+          <p>Generates print-ready standard PDF documents centered with exact margins.</p>
+          <span class="tool-arrow">Open Tool →</span>
+        </a>
+        <a href="converters/png-to-ico/" class="tool-card">
+          <span class="tool-icon">⭐</span>
+          <h4>PNG to ICO</h4>
+          <p>Produces multi-resolution 256x256 Windows icons and website favicons.</p>
+          <span class="tool-arrow">Open Tool →</span>
+        </a>
+        <a href="converters/png-to-bmp/" class="tool-card">
+          <span class="tool-icon">💾</span>
+          <h4>PNG to BMP</h4>
+          <p>Encodes uncompressed 24-bit RGB bitmap binaries for legacy engineering systems.</p>
+          <span class="tool-arrow">Open Tool →</span>
+        </a>
+        <a href="converters/png-to-base64/" class="tool-card">
+          <span class="tool-icon">🔡</span>
+          <h4>PNG to Base64</h4>
+          <p>Instant Data URL string generation for inlined CSS, HTML, and API payloads.</p>
+          <span class="tool-arrow">Open Tool →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Architecture & Features Breakdown -->
+    <section class="benefits wrap" id="how">
+      <div class="benefit">
+        <span class="benefit-symbol">01 /</span>
+        <h3>Zero-Server Architecture</h3>
+        <p>Built with HTML5 Canvas, Web Workers, and native TypedArrays. Files never leave your browser RAM, guaranteeing absolute confidentiality for enterprise data.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-symbol">02 /</span>
+        <h3>In-Memory ZIP Packaging</h3>
+        <p>Our proprietary binary ZIP builder crafts valid PKZIP 2.0 archives dynamically in browser ArrayBuffers with hardware-accelerated CRC-32 checksums.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-symbol">03 /</span>
+        <h3>Enterprise Performance</h3>
+        <p>Zero bloated frameworks. Pure vanilla JavaScript ensures sub-second load times, instant execution, and smooth mobile and desktop responsiveness.</p>
+      </div>
+    </section>
+
+    <div class="bottom-notice wrap">
+      SPM PNG Studio is an open-source initiative by <strong>SPManchester Private Limited</strong>. All conversion processes take place locally on the user's hardware.
+    </div>
+  </main>
+
+  <!-- Branded Corporate Footer -->
+  <footer class="footer wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-square">✦</span>
+          <strong>SPM PNG Studio™</strong>
+        </div>
+        <p>Engineered with precision by <strong>SPManchester Private Limited</strong>. Delivering high-impact software solutions and privacy-first digital tools worldwide.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <strong>Enterprise</strong>
+          <a href="https://www.spmanchester.com" target="_blank" rel="noopener noreferrer">Official Website</a>
+          <a href="mailto:info@spmanchester.com">Corporate Inquiries</a>
+          <a href="mailto:info@spmanchester.com">Security & Support</a>
+        </div>
+        <div class="footer-col">
+          <strong>Open Source</strong>
+          <a href="https://github.com/serviceprovidermanchester/SPM-PNG-Studio-" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+          <a href="LICENSE">MIT License</a>
+          <a href="CONTRIBUTING.md">Contribution Guide</a>
+          <a href="SECURITY.md">Security Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 <strong>SPManchester Private Limited</strong>. All rights reserved.</span>
+      <span>Lead Maintainer & Architect: <strong>Sayed Mudassar Akbar</strong></span>
+      <span>Support: <a href="mailto:info@spmanchester.com">info@spmanchester.com</a></span>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

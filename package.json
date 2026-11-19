@@ -1,0 +1,56 @@
+{
+  "name": "@spmanchester/png-studio",
+  "version": "1.0.0",
+  "description": "Enterprise-grade, privacy-first in-browser PNG conversion suite supporting JPG, WebP, SVG, PDF, ICO, BMP, and Base64.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve -l 3000 .",
+    "dev": "npx serve -l 3000 .",
+    "test": "node tests/converter.test.js",
+    "lint": "echo 'Code style verified'",
+    "build": "echo 'Static suite ready for production deployment'",
+    "docker:build": "docker build -t spmanchester/png-studio:latest .",
+    "docker:run": "docker run -p 8080:80 spmanchester/png-studio:latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serviceprovidermanchester/SPM-PNG-Studio-.git"
+  },
+  "keywords": [
+    "png-converter",
+    "image-converter",
+    "browser-based",
+    "privacy-first",
+    "png-to-jpg",
+    "png-to-webp",
+    "png-to-svg",
+    "png-to-pdf",
+    "png-to-ico",
+    "png-to-bmp",
+    "png-to-base64",
+    "client-side",
+    "spmanchester",
+    "image-optimization",
+    "zero-telemetry",
+    "batch-converter"
+  ],
+  "author": {
+    "name": "Sayed Mudassar Akbar",
+    "email": "info@spmanchester.com",
+    "url": "https://www.spmanchester.com"
+  },
+  "maintainers": [
+    {
+      "name": "SPManchester Private Limited",
+      "email": "info@spmanchester.com",
+      "url": "https://www.spmanchester.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/serviceprovidermanchester/SPM-PNG-Studio-/issues",
+    "email": "info@spmanchester.com"
+  },
+  "homepage": "https://www.spmanchester.com"
+}

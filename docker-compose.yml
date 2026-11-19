@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  png-studio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spmanchester-png-studio
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "maintainer=SPManchester Private Limited"
+      - "author=Sayed Mudassar Akbar"
+      - "website=https://www.spmanchester.com"
